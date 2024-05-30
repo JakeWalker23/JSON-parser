@@ -9,6 +9,12 @@ So you should build a very simple lexer and parser for this step.
 '''
 
 def test_parser_returns_true_with_valid_JSON_object():
-    data = {}
+    data = '{}'
     
     assert Parser.parse_json(data) is True
+
+
+def test_parser_returns_false_with_invalid_JSON_object():
+    data = '{'
+
+    assert Parser.parse_json(data) is False
