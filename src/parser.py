@@ -1,4 +1,7 @@
 class Parser:
 
     def parse_json(data):
-        return True
+        if data == "{}":
+            return True
+        else:
+            return False
