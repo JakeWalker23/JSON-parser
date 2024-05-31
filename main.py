@@ -1,3 +1,5 @@
-from src.add import add
+from src.parser import Parser
 
-add(1, 1)
+data = {}
+
+print(Parser.parse_json(data))
