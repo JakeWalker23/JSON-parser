@@ -21,6 +21,11 @@ def test_parser_returns_false_with_invalid_JSON_object():
 
 
 def test_for_valid_JSON_file():
-    file = "test.csv"
+    file = "test.json"
+
+    assert Parser.validate_json_file(file) is True
+
+def test_for_invalid_JSON_file():
+    file = "invalid_test.json"
 
     assert Parser.validate_json_file(file) is False

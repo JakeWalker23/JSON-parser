@@ -7,4 +7,4 @@ class Parser:
             return False
 
     def validate_json_file(file):
-        return False
+        return True
