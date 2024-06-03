@@ -5,3 +5,6 @@ class Parser:
             return True
         else:
             return False
+
+    def validate_json_file(file):
+        return False
