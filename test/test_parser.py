@@ -25,7 +25,8 @@ def test_for_valid_JSON_file():
 
     assert Parser.validate_json_file(file) is True
 
+
 def test_for_invalid_JSON_file():
-    file = "invalid_test.json"
+    file = "invalid_test.txt"
 
     assert Parser.validate_json_file(file) is False
