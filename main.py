@@ -1,6 +1,6 @@
 from src.parser import Parser
 import sys
 
-data = "{}"
+data = sys.argv[1]
 
 print(Parser.parse_json(data))
