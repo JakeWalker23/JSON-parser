@@ -1,10 +1,24 @@
 from src.parser import Parser
 import sys
+import json
 
-file_name = sys.argv[1]
+json_data = sys.argv[1]
 
-file = open(file_name, "r")
-content = file.read()
-print(content)
-print(Parser.parse_json(str(content)))
-file.close()
+if '.json' in json_data:
+    with open(json_data) as file:
+        content = json.load(file)
+
+        Parser.parse_json(content)
+            
+        print(Parser.parse_json(content)) 
+
+    file.close()
+
+else:
+    try:
+        json_payload = json.loads(json_data)
+        
+        Parser.parse_json(json_payload)
+        print(Parser.parse_json(json_payload))
+    except:
+        print('False')
