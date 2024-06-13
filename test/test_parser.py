@@ -2,13 +2,21 @@ from src.parser import Parser
 import pytest
 
 '''
-# Step 1
-In this step your goal is to parse a valid simple JSON object, specifically: ‘{}’ 
-and an invalid JSON file and correctly report which is which. 
-So you should build a very simple lexer and parser for this step.
+Step 2
+In this step your goal is to extend the parser to parse 
+a simple JSON object containing string keys and string values, 
+i.e.:  {"key": "value"}
+
+You can test against the files in the folder tests/step2.
 '''
 
+
 def test_parser_returns_true_with_valid_JSON_object():
+    data = {"key": "value"}
+    
+    assert Parser.parse_json(data) is True
+
+def test_parser_returns_true_with_empty_JSON_object():
     data = {}
     
     assert Parser.parse_json(data) is True

@@ -4,7 +4,7 @@ import json
 
 json_data = sys.argv[1]
 
-if '.json' in json_data:
+if Parser.validate_json_file(json_data):
     with open(json_data) as file:
         content = json.load(file)
 

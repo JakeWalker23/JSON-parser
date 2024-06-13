@@ -7,7 +7,7 @@ class Parser:
             return False
 
     def validate_json_file(file):
-        if file.split('.')[1] == 'json':
+        if '.json' in file:
             return True
         else:
             return False
