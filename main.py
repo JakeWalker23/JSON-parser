@@ -10,7 +10,7 @@ if Parser.validate_json_file(json_data):
 
         Parser.parse_json(content)
             
-        print(Parser.parse_json(content)) 
+        print(str(Parser.parse_json(content))) 
 
     file.close()
 
@@ -19,6 +19,6 @@ else:
         json_payload = json.loads(json_data)
         
         Parser.parse_json(json_payload)
-        print(Parser.parse_json(json_payload))
+        print(str(Parser.parse_json(json_payload)))
     except:
         print('False')

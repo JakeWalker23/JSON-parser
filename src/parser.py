@@ -1,9 +1,15 @@
+import json
+
 class Parser:
 
     def parse_json(data):
-        if data == {}:
+        if data == "{}":
             return True
-        else:
+        
+        try:
+            json.loads(data)
+            return True
+        except ValueError:
             return False
 
     def validate_json_file(file):

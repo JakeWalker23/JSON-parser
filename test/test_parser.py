@@ -12,20 +12,20 @@ You can test against the files in the folder tests/step2.
 
 
 def test_parser_returns_true_with_valid_JSON_object():
-    data = {"key": "value"}
+    data = "{\"key\": \"value\"}"
     
-    assert Parser.parse_json(data) is True
+    assert Parser.parse_json(data) == True
 
 def test_parser_returns_true_with_empty_JSON_object():
-    data = {}
+    data = "{}"
     
-    assert Parser.parse_json(data) is True
+    assert Parser.parse_json(data) == True
     
 
 def test_parser_returns_false_with_invalid_JSON_object():
     data = "{"
 
-    assert Parser.parse_json(data) is False
+    assert Parser.parse_json(data) == False
 
 
 def test_for_valid_JSON_file():
