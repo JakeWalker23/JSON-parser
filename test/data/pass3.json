@@ -1,6 +1,7 @@
 {
-    "JSON Test Pattern pass3": {
-        "The outermost value": "must be an object or array.",
-        "In this test": "It is an object."
-    }
+    "key1": true,
+    "key2": false,
+    "key3": null,
+    "key4": "value",
+    "key5": 101
 }

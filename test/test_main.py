@@ -15,6 +15,16 @@ def test_main_returns_true_when_valid_json_passed_in_argv_1():
     assert result.stdout.strip() == 'True'
 
 
+def test_main_returns_true_when_passed_valid_json_in_argv_1_2():
+    data = "[]"
+
+    cmd = ["python", "main.py", data]
+
+    result = subprocess.run(cmd, capture_output=True, text=True)
+
+    assert result.stdout.strip() == 'True'
+
+
 def test_main_returns_false_when_passed_invalid_json_in_argv_1():
     data = "[}"
 
@@ -35,6 +45,7 @@ def test_main_returns_true_when_valid_json_file_is_passed_in_sys_argv_1():
 
     assert result.stdout.strip() == 'True'
 
+
 def test_main_returns_false_when_invalid_json_file_is_passed_in_sys_argv_1():
     '''This test takes a valid json file containing valid json
     and returns True'''
@@ -44,6 +55,18 @@ def test_main_returns_false_when_invalid_json_file_is_passed_in_sys_argv_1():
     result = subprocess.run(cmd, capture_output=True, text=True)
 
     assert result.stdout.strip() == 'False'
+
+
+def test_main_returns_true_when_valid_json_file_is_passed_in_sys_argv_1_2():
+    '''This test takes a valid json file containing valid json
+    and returns True'''
+
+    cmd = ["python", "main.py", get_full_file_path('pass2.json')]
+
+    result = subprocess.run(cmd, capture_output=True, text=True)
+
+    assert result.stdout.strip() == 'True'
+
 
 def get_full_file_path(file_name: str) -> str:
 

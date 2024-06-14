@@ -1,6 +1,5 @@
 from src.parser import Parser
 import sys
-import json
 
 file_path = sys.argv[1]
 
@@ -16,7 +15,7 @@ if Parser.validate_json_file(file_path):
 
 else:
     try:
-        Parser.parse_json(data=file_path)
-        print(str(Parser.parse_json(data=file_path)))
+        Parser.parse_json(file_path)
+        print(str(Parser.parse_json(file_path)))
     except Exception:
         print('False')

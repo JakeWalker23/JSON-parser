@@ -1,7 +1,5 @@
 import re
 
-
-
 class Parser:
 
     @staticmethod
