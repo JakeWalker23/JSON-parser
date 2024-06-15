@@ -6,6 +6,19 @@ def test_main_returns_true_when_valid_json_passed_in_argv_1():
     '''This test takes an empty JSON and passes
     it as a argument to main.py as argv[1]'''
 
+    data = "{ key : value }"
+
+    cmd = ["python", "main.py", data]
+
+    result = subprocess.run(cmd, capture_output=True, text=True)
+
+    assert result.stdout.strip() == 'True'
+
+
+def test_main_returns_true_when_valid_json_passed_in_argv_1():
+    '''This test takes an empty JSON and passes
+    it as a argument to main.py as argv[1]'''
+
     data = "{}"
 
     cmd = ["python", "main.py", data]
