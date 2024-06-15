@@ -18,10 +18,10 @@ and null values, i.e.:
 You can test against the files in the folder tests/step3.
 '''
 
-# def test_parser_returns_true_with_valid_nested_JSON_object():
-#     data = "{\"key1\": True, \"key2\": False, \"key3\": None, \"key4\": \"value\", \"key5\": 101}"
+def test_parser_returns_true_with_valid_nested_JSON_object():
+    data = "{\"key1\": True, \"key2\": False, \"key3\": None, \"key4\": \"value\", \"key5\": 101}"
     
-#     assert Parser.parse_json(data) is True
+    assert Parser.parse_json(data) is True
 
 
 def test_parser_returns_true_with_valid_JSON_object():
