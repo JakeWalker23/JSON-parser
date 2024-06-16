@@ -23,6 +23,11 @@ def test_parser_returns_true_with_valid_nested_JSON_object():
     
     assert Parser.parse_json(data) is True
 
+def test_parser_returns_true_with_valid_JSON():
+    data = "abc"
+    
+    assert Parser.parse_json(data) is True
+    
 
 def test_parser_returns_true_with_valid_JSON_object():
     data = "{\"key\": \"value\"}"
