@@ -57,3 +57,27 @@ def test_for_invalid_JSON_file():
     file = "invalid_test.txt"
 
     assert Parser.validate_json_file(file) is False
+
+
+def test_parser_returns_value_from_dict_key():
+    data = "{\"name\": \"jake\"}"
+
+    result = Parser.parse_json_to_object(data) 
+    
+    assert result['name'] == 'jake'
+
+def test_parser_returns_values_from_dict_keys():
+    data = "{\"name1\": \"Jake\", \"name2\": \"Thomas\"}"
+    
+    result = Parser.parse_json_to_object(data)
+
+    assert result['name1'] == 'Jake'
+    assert result['name2'] == 'Thomas'
+
+def test_parser_returns_values_from_dict_keys():
+    data = "{\"name\": \"Jake\", \"age\": 23}"
+    
+    result = Parser.parse_json_to_object(data)
+
+    assert result['name'] == 'Jake'
+    assert result['age'] == 23
