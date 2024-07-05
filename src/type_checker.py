@@ -13,4 +13,7 @@ class TypeChecker:
         elif data == 'True' or data == 'False':
             return bool(data)
         
+        elif data == 'None':
+            return None
+        
         return str(data)

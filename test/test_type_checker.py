@@ -18,3 +18,8 @@ def test_type_checker_recognises_string_is_not_int():
 
     assert type(TypeChecker.return_correct_type(data)) is str
     assert TypeChecker.return_correct_type(data) == '23'
+
+def test_type_checker_recognises_none_is_a_type():
+    data = 'None'
+
+    assert TypeChecker.return_correct_type(data) is None

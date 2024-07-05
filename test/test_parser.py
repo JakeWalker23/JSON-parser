@@ -102,11 +102,11 @@ def test_parser_returns_values_for_multiple_string_number_and_boolean():
 
     assert result['name1'] == 'Jake'
     assert result['age1'] == 23
-    assert result['bellend1'] == True 
+    assert result['bellend1'] is True 
 
     assert result['name2'] == 'Thomas'
     assert result['age2'] == 40
-    assert result['bellend2'] == True 
+    assert result['bellend2'] is True 
 
 
 def test_parser_returns_correct_values_for_None_values():
@@ -116,4 +116,4 @@ def test_parser_returns_correct_values_for_None_values():
 
     assert result['name'] == 'Jake'
     assert result['age'] == 23
-    assert result['bellend'] == None
+    assert result['bellend'] is None
