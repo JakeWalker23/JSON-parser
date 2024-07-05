@@ -1,3 +1,4 @@
+from src.type_checker import TypeChecker
 import re
 
 class Parser:
@@ -29,6 +30,6 @@ class Parser:
         for pair in object_split:
             new_string = pair.replace('"', '').replace(' ', '').strip('{').strip('}').split(':')
 
-            response[new_string[0]] = new_string[1]
+            response[new_string[0]] = TypeChecker.return_correct_type(new_string[1])
 
         return response 
