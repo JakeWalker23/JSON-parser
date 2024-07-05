@@ -117,3 +117,10 @@ def test_parser_returns_correct_values_for_None_values():
     assert result['name'] == 'Jake'
     assert result['age'] == 23
     assert result['bellend'] is None
+
+def test_for_valid_json_array():
+    data = '[]'
+
+    result = Parser.parse_json_to_object(data)
+
+    assert result == []
