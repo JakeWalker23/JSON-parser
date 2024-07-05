@@ -74,10 +74,19 @@ def test_parser_returns_values_from_dict_keys():
     assert result['name1'] == 'Jake'
     assert result['name2'] == 'Thomas'
 
-def test_parser_returns_values_from_dict_keys():
+def test_parser_returns_correct_values_for_string_and_int():
     data = "{\"name\": \"Jake\", \"age\": 23}"
     
     result = Parser.parse_json_to_object(data)
 
     assert result['name'] == 'Jake'
     assert result['age'] == 23
+
+def test_parser_returns_values_for_string_number_and_boolean():
+    data = "{\"name\": \"Jake\", \"age\": \"23\", \"bellend\": True}"
+    
+    result = Parser.parse_json_to_object(data)
+
+    assert result['name'] == 'Jake'
+    assert result['age'] == "23"
+    assert result['bellend'] == True
