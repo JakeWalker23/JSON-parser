@@ -6,7 +6,11 @@ class TypeChecker:
     def return_correct_type(data):
         if '"' in data:
             return str(data.replace('"', ""))
+        
         elif data.isnumeric():
-            return int(data) 
+            return int(data)
+        
+        elif data == 'True' or data == 'False':
+            return bool(data)
         
         return str(data)

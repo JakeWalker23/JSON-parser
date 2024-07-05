@@ -66,6 +66,7 @@ def test_parser_returns_value_from_dict_key():
     
     assert result['name'] == 'jake'
 
+
 def test_parser_returns_values_from_dict_keys():
     data = "{\"name1\": \"Jake\", \"name2\": \"Thomas\"}"
     
@@ -73,6 +74,7 @@ def test_parser_returns_values_from_dict_keys():
 
     assert result['name1'] == 'Jake'
     assert result['name2'] == 'Thomas'
+
 
 def test_parser_returns_correct_values_for_string_and_int():
     data = "{\"name\": \"Jake\", \"age\": 23}"
@@ -82,11 +84,36 @@ def test_parser_returns_correct_values_for_string_and_int():
     assert result['name'] == 'Jake'
     assert result['age'] == 23
 
+
 def test_parser_returns_values_for_string_number_and_boolean():
     data = "{\"name\": \"Jake\", \"age\": \"23\", \"bellend\": True}"
     
     result = Parser.parse_json_to_object(data)
 
     assert result['name'] == 'Jake'
-    assert result['age'] == "23"
-    assert result['bellend'] == True
+    assert result['age'] == 23
+    assert result['bellend'] == True 
+
+
+def test_parser_returns_values_for_multiple_string_number_and_boolean():
+    data = "{\"name1\": \"Jake\", \"age1\": \"23\", \"bellend1\": True, \"name2\": \"Thomas\", \"age2\": \"40\", \"bellend2\": True}"
+    
+    result = Parser.parse_json_to_object(data)
+
+    assert result['name1'] == 'Jake'
+    assert result['age1'] == 23
+    assert result['bellend1'] == True 
+
+    assert result['name2'] == 'Thomas'
+    assert result['age2'] == 40
+    assert result['bellend2'] == True 
+
+
+def test_parser_returns_correct_values_for_None_values():
+    data = "{\"name\": \"Jake\", \"age\": \"23\", \"bellend\": None}"
+    
+    result = Parser.parse_json_to_object(data)
+
+    assert result['name'] == 'Jake'
+    assert result['age'] == 23
+    assert result['bellend'] == None

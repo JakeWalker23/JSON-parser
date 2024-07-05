@@ -23,13 +23,13 @@ class Parser:
         
     @staticmethod
     def parse_json_to_object(data: str) -> dict:
-        response = {}
+        formatted_object = {}
 
-        object_split = data.split(',')
+        key_value_array = data.split(',')
 
-        for pair in object_split:
-            new_string = pair.replace('"', '').replace(' ', '').strip('{').strip('}').split(':')
+        for key_value in key_value_array:
+            formatted_key_value = key_value.strip('{').strip('}').replace('"', '').replace(' ', '').split(':')
 
-            response[new_string[0]] = TypeChecker.return_correct_type(new_string[1])
+            formatted_object[formatted_key_value[0]] = TypeChecker.return_correct_type(formatted_key_value[1])
 
-        return response 
+        return formatted_object 
