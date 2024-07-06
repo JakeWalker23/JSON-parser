@@ -96,13 +96,13 @@ def test_parser_returns_values_for_string_number_and_boolean():
 
 
 def test_parser_returns_values_for_multiple_string_number_and_boolean():
-    data = "{\"name1\": \"Jake\", \"age1\": \"23\", \"bellend1\": True, \"name2\": \"Thomas\", \"age2\": \"40\", \"bellend2\": True}"
+    data = "{\"name1\": \"Jake\", \"age1\": \"23\", \"bellend1\": False, \"name2\": \"Thomas\", \"age2\": \"40\", \"bellend2\": True}"
     
     result = Parser.parse_json_to_object(data)
 
     assert result['name1'] == 'Jake'
     assert result['age1'] == 23
-    assert result['bellend1'] is True 
+    assert result['bellend1'] is False 
 
     assert result['name2'] == 'Thomas'
     assert result['age2'] == 40
@@ -128,23 +128,24 @@ def test_for_valid_json_array():
 
 
 def test_for_valid_json_structure():
-    data = '[{}]'
+    data = "[{}]"
 
     result = Parser.parse_json_to_object(data)
 
     assert result == [{}]
 
+def test_for_valid_json_array_structure():
+    data = "[{\"name\" : \"Thomas\", \"good_at_coding\" : False }]"
+
+    result = Parser.parse_json_to_object(data)
+
+    assert result[0]['name'] == 'Thomas'
+    assert result[0]['good_at_coding'] == False
+
+
 def test_step_three():
     #Testing types, boolean, null, string & int.
-    data = '''
-    {
-        "key1": true,
-        "key2": false,
-        "key3": null,
-        "key4": "value",
-        "key5": 101
-    }
-    '''
+    data = "{ \"key1\" : True, \"key2\": False, \"key3\": None, \"key4\": \"value\", \"key5\": 101 }"
 
     result = Parser.parse_json_to_object(data)
 

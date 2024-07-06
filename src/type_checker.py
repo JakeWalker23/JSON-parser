@@ -10,9 +10,12 @@ class TypeChecker:
         elif data.isnumeric():
             return int(data)
         
-        elif data == 'True' or data == 'False':
-            return bool(data)
+        elif data == 'True':
+            return True
         
+        elif data == 'False':
+            return False
+            
         elif data == 'None':
             return None
         
