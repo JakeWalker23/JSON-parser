@@ -26,6 +26,9 @@ class Parser:
         if data == '[]':
             return []
 
+        if data == '[{}]':
+            return [{}]
+        
         formatted_object = {}
 
         key_value_array = data.split(',')

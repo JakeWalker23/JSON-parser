@@ -133,3 +133,23 @@ def test_for_valid_json_structure():
     result = Parser.parse_json_to_object(data)
 
     assert result == [{}]
+
+def test_step_three():
+    #Testing types, boolean, null, string & int.
+    data = '''
+    {
+        "key1": true,
+        "key2": false,
+        "key3": null,
+        "key4": "value",
+        "key5": 101
+    }
+    '''
+
+    result = Parser.parse_json_to_object(data)
+
+    assert result["key1"] is True
+    assert result["key2"] is False
+    assert result["key3"] is None
+    assert result["key4"] == 'value'
+    assert result["key5"] == 101
