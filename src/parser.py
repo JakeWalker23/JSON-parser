@@ -23,6 +23,9 @@ class Parser:
         
     @staticmethod
     def parse_json_to_object(data: str) -> dict:
+        if data == '[]':
+            return []
+
         formatted_object = {}
 
         key_value_array = data.split(',')
