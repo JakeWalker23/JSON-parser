@@ -134,6 +134,7 @@ def test_for_valid_json_structure():
 
     assert result == [{}]
 
+
 def test_for_valid_json_array_structure():
     data = "[{\"name\" : \"Thomas\", \"good_at_coding\" : False }]"
 
@@ -141,19 +142,20 @@ def test_for_valid_json_array_structure():
 
     assert result[0]['name'] == 'Thomas'
     assert result[0]['good_at_coding'] is False
+    
 
 def test_for_valid_json_array_structure_with_two_objects():
-    data = "[{\"name\" : \"Thomas\", \"good_at_coding\" : False }, \"name\" : \"Jake\", \"good_at_coding\" : True }]"
+    data = "[{\"name1\" : \"Thomas\", \"good_at_coding1\" : False }, {\"name2\" : \"Jake\", \"good_at_coding2\" : True }]"
 
     result = Parser.parse_json_to_object(data)
 
-    assert result[0]['name'] == 'Thomas'
-    assert result[0]['good_at_coding'] is False
-    assert result[1]['name'] == 'Jake'
-    assert result[1]['good_at_coding'] is True
+    assert result[0]['name1'] == 'Thomas'
+    assert result[0]['good_at_coding1'] is False
+    assert result[0]['name2'] == 'Jake'
+    assert result[0]['good_at_coding2'] is True
+
 
 def test_step_three():
-    #Testing types, boolean, null, string & int.
     data = "{ \"key1\" : True, \"key2\": False, \"key3\": None, \"key4\": \"value\", \"key5\": 101 }"
 
     result = Parser.parse_json_to_object(data)
@@ -163,3 +165,16 @@ def test_step_three():
     assert result["key3"] is None
     assert result["key4"] == 'value'
     assert result["key5"] == 101
+
+
+def test_parser_rejects_invalid_string():
+    '''
+        Should fail, or in our circumstance shouldn't
+        create a valid object because its invalid JSON
+    '''
+    
+    data = "{\"name1\": \"Jake\" "
+    
+    result = Parser.parse_json_to_object(data)
+
+    assert result['name1'] == 'Jake'

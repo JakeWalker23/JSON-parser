@@ -1,4 +1,5 @@
 from src.type_checker import TypeChecker
+from src.helpers.JSON_cleaner import JSONCleaner
 import re
 
 class Parser:
@@ -29,20 +30,18 @@ class Parser:
         if data == '[{}]':
             return [{}]
         
-        
-
         formatted_object = {}
-        key_value_array = data.split(',')
 
-        for key_value in key_value_array:
-            formatted_key_value = key_value.replace('{', '').replace('}', '').replace('[', '').replace(']', '').replace('"', '').replace(' ', '').split(':')
+        formatted_json_array = JSONCleaner.clean_json_string(data)
+        
+        for item in formatted_json_array:
+            formatted_object[item[0]] = TypeChecker.return_correct_type(item[1])
 
-            formatted_object[formatted_key_value[0]] = TypeChecker.return_correct_type(formatted_key_value[1])
-
-        if data[0] =='[':
-
+        if data.startswith('['):
+            
             array_wrapper = []
             array_wrapper.append(formatted_object)
             return array_wrapper
         
-        return formatted_object 
+
+        return formatted_object
