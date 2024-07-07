@@ -142,6 +142,15 @@ def test_for_valid_json_array_structure():
     assert result[0]['name'] == 'Thomas'
     assert result[0]['good_at_coding'] is False
 
+def test_for_valid_json_array_structure_with_two_objects():
+    data = "[{\"name\" : \"Thomas\", \"good_at_coding\" : False }, \"name\" : \"Jake\", \"good_at_coding\" : True }]"
+
+    result = Parser.parse_json_to_object(data)
+
+    assert result[0]['name'] == 'Thomas'
+    assert result[0]['good_at_coding'] is False
+    assert result[1]['name'] == 'Jake'
+    assert result[1]['good_at_coding'] is True
 
 def test_step_three():
     #Testing types, boolean, null, string & int.
