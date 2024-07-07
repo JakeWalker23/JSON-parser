@@ -15,7 +15,7 @@ def test_main_returns_true_when_valid_json_passed_in_argv_1():
     assert result.stdout.strip() == 'True'
 
 
-def test_main_returns_true_when_valid_json_passed_in_argv_1():
+def test_main_returns_true_when_empty_valid_json_passed_in_argv_1():
     '''This test takes an empty JSON and passes
     it as a argument to main.py as argv[1]'''
 

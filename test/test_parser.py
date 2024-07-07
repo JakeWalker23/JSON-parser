@@ -21,30 +21,30 @@ You can test against the files in the folder tests/step3.
 def test_parser_returns_true_with_valid_nested_JSON_object():
     data = "{\"key1\": True, \"key2\": False, \"key3\": None, \"key4\": \"value\", \"key5\": 101}"
     
-    assert Parser.parse_json(data) is True
+    assert Parser.is_valid_json(data) is True
 
 def test_parser_returns_true_with_valid_JSON():
     data = "abc"
     
-    assert Parser.parse_json(data) is True
+    assert Parser.is_valid_json(data) is True
     
 
 def test_parser_returns_true_with_valid_JSON_object():
     data = "{\"key\": \"value\"}"
     
-    assert Parser.parse_json(data) is True
+    assert Parser.is_valid_json(data) is True
 
 
 def test_parser_returns_true_with_empty_JSON_object():
     data = "{}"
     
-    assert Parser.parse_json(data) is True
+    assert Parser.is_valid_json(data) is True
     
 
 def test_parser_returns_false_with_invalid_JSON_object():
     data = "{"
 
-    assert Parser.parse_json(data) is False
+    assert Parser.is_valid_json(data) is False
 
 
 def test_for_valid_JSON_file():
@@ -142,6 +142,15 @@ def test_for_valid_json_array_structure():
 
     assert result[0]['name'] == 'Thomas'
     assert result[0]['good_at_coding'] is False
+
+def test_for_valid_json_array_with_nested_json_array_structure():
+    data = "[{\"name\" : \"Thomas\", \"nested_array\" : [1, 2]}]"
+
+    result = Parser.parse_json_to_object(data)
+
+    assert result[0]['name'] == 'Thomas'
+    assert result[0]['good_at_coding'][0] == 1
+    assert result[0]['good_at_coding'][1] == 2
     
 
 def test_for_valid_json_array_structure_with_two_objects():
@@ -175,6 +184,6 @@ def test_parser_rejects_invalid_string():
     
     data = "{\"name1\": \"Jake\" "
     
-    result = Parser.parse_json_to_object(data)
+    result = Parser.is_valid_json(data)
 
-    assert result['name1'] == 'Jake'
+    assert result is False

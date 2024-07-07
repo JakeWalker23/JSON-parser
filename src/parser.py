@@ -5,7 +5,7 @@ import re
 class Parser:
 
     @staticmethod
-    def parse_json(data: str) -> bool:
+    def is_valid_json(data: str) -> bool:
         pattern = r'^\s*(\{.*\}|\[.*\])\s*$'
 
         if data == 'abc':
