@@ -140,7 +140,7 @@ def test_for_valid_json_array_structure():
     result = Parser.parse_json_to_object(data)
 
     assert result[0]['name'] == 'Thomas'
-    assert result[0]['good_at_coding'] == False
+    assert result[0]['good_at_coding'] is False
 
 
 def test_step_three():
